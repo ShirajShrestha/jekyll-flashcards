@@ -1,6 +1,18 @@
-<div class="flipCard">
-  <div class="card" onclick="this.classList.toggle('flipped');">
-    <div class="side front">{{page.keyword}}</div>
-    <div class="side back">{{page.definition}}</div>
+<div class="card-wrapper">
+  {% for card in site.data.flip_cards %}
+  <div class="flip-card">
+    <div class="card">
+      <div class="card-side card-front">{{card.keyword}}</div>
+      <div class="card-side card-back">{{card.definition}}</div>
+    </div>
   </div>
+  {% endfor %}
 </div>
+
+<script>
+  document.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("click", function () {
+      this.classList.toggle("flipped");
+    });
+  });
+</script>
